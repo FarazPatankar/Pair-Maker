@@ -47,14 +47,14 @@ h1 {
 
 .first-student-img {
 	float: left;
-	-webkit-animation-delay: 2s;
+	-webkit-animation-delay: 0.5s;
 }
 
 .second-student-img {
 	float: right;
-	-webkit-animation-delay: 3s;
+	-webkit-animation-delay: 1.5s;
 }
 
 .third-student-img {
-	-webkit-animation-delay: 4s;
+	-webkit-animation-delay: 2.5s;
 }
