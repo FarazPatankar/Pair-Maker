@@ -32,18 +32,22 @@ h1 {
 .pair-container {
 	margin-left: 10px;
 	margin-right: 10px;
+	width: 75%;
+	margin: 0 auto;
+}
+
+.each-pair {
+	border: 1px solid #fff;
+	border-radius: 10px;
+	margin: 10px;
+	overflow: hidden;
+	text-align: center;
 }
 
 .first-student-img {
 	float: left;
-	padding-right: 250px;
-	margin-top: 10px;
-	margin-bottom: 10px;
 }
 
 .second-student-img {
 	float: right;
-	margin-top: 10px;
-	margin-bottom: 10px;
 }
-
