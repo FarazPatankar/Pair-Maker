@@ -1,4 +1,4 @@
-var students = ["Nick", "Anais", "Bianca", "Javi", "Christian", "Pete", "Faraz", "Julian", "Rick", "Gin", "Jeanella", "Mat", "Hsiu", "Andres", "Emilio", "Michael", "Vince"];
+var students = ["Nick", "Bianca", "Anais", "Javi", "Christian", "Pete", "Faraz", "Julian", "Rick", "Gin", "Jeanella", "Mat", "Hsiu", "Andres", "Emilio", "Michael", "Vince"];
 
 var loopLength = Math.floor(students.length/2);
 
@@ -14,18 +14,15 @@ var makePairs = function(students, loopLength) {
 
 		var html = `
 			<div class="each-pair">
-				<img class="first-student-img animated slideInRight" data-id="${firstInPair}" src="http://dummyimage.com/250x250/126bbf/fff&text=${firstInPair}">
-				<img class="second-student-img animated slideInLeft" data-id="${secondInPair}" src="http://dummyimage.com/250x250/126bbf/fff&text=${secondInPair}">
+				<img class="first-student-img animated fadeInRight" data-id="${firstInPair}" src="http://dummyimage.com/250x250/126bbf/fff&text=${firstInPair}">
+				<img class="second-student-img animated fadeInLeft" data-id="${secondInPair}" src="http://dummyimage.com/250x250/126bbf/fff&text=${secondInPair}">
 			</div>
 		`;
 
+
 		$(".js-student-images").append(html);
-
-		// $(".js-student-images").append(`<img class="first-student-img animated slideInRight" data-id="${firstInPair}" src="http://dummyimage.com/250x250/126bbf/fff&text=${firstInPair}">`)
-		// $(".js-student-images").append(`<img class="second-student-img animated slideInLeft" data-id="${secondInPair}" src="http://dummyimage.com/250x250/126bbf/fff&text=${secondInPair}">`)
-
 	}
-	$(".js-student-images").children(":first").append(`<img class="third-student-img animated fadeInUpBig" data-id="${students[0]}" src="http://dummyimage.com/250x250/126bbf/fff&text=${students[0]}">`)
+	$(".js-student-images").children(":first").append(`<img class="third-student-img animated fadeInUp" data-id="${students[0]}" src="http://dummyimage.com/250x250/126bbf/fff&text=${students[0]}">`)
 }
 
 $(".js-make-pairs").on("click", function() {

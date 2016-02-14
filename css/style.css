@@ -16,6 +16,7 @@ body {
 	font-family: 'Raleway',sans-serif;
 	font-size: 20px;
 	font-weight: bold;
+	margin-bottom: 10px;
 }
 
 h1 {
@@ -24,7 +25,7 @@ h1 {
 	font-size: 62px;
 	font-weight: 800;
 	line-height: 72px;
-	margin: 0 0 24px;
+	margin: 0 0 15px;
 	text-align: center;
 	text-transform: uppercase;
 }
@@ -46,8 +47,14 @@ h1 {
 
 .first-student-img {
 	float: left;
+	-webkit-animation-delay: 2s;
 }
 
 .second-student-img {
 	float: right;
+	-webkit-animation-delay: 3s;
+}
+
+.third-student-img {
+	-webkit-animation-delay: 4s;
 }
