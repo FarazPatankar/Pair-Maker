@@ -72,12 +72,13 @@ function makePairs(students) {
 	var pairs = [];
 	$(".js-student-images").empty();
 	for(var i = 0; i < loopLength; i++) {
+		var firstIndex = Math.floor(Math.random()*students.length)
+		var firstInPair = students[firstIndex];
+		students.splice(firstIndex, 1)
 
-		var firstInPair = students[Math.floor(Math.random()*students.length)];
-		var students = students.filter(function(e){return e!==firstInPair});
-
-		var secondInPair = students[Math.floor(Math.random()*students.length)];
-		var students = students.filter(function(e){return e!==secondInPair});
+		var secondIndex = Math.floor(Math.random()*students.length)
+		var secondInPair = students[secondIndex];
+		students.splice(secondIndex, 1)
 
 		var html = `
 			<div class="each-pair">
