@@ -1,11 +1,34 @@
-var students = ["Nick", "Bianca", "Anais", "Javi", "Christian", "Pete", "Faraz", "Julian", "Rick", "Gin", "Jeanella", "Mat", "Hsiu", "Andres", "Emilio", "Michael", "Vince"];
+var data = localStorage.getItem("people");
 
-var pairs = [];
+if (data === null) {
+	showInput();
+}
+else {
+	var students = JSON.parse(data);
+	showRandomizer(students);
+}
 
-var loopLength = Math.floor(students.length/2);
+function showInput() {
+	$('.js-input').show();
+}
 
-var makePairs = function(students, loopLength) {
-	pairs = [];
+function showRandomizer(students) {
+	new Clipboard('.js-make-pairs', {
+	    text: function(trigger) {
+	        return trigger.getAttribute('data-pairs');
+	    }
+	});
+
+	$(".js-make-pairs").on("click", firstClick)
+
+	$('.js-randomizer').show();
+}
+
+
+function makePairs(students) {
+	var loopLength = Math.floor(students.length/2);
+	console.log(loopLength);
+	var pairs = [];
 	$(".js-student-images").empty();
 	for(var i = 0; i < loopLength; i++) {
 
@@ -31,31 +54,26 @@ var makePairs = function(students, loopLength) {
 		var trio = pairs[0];
 		pairs[0] = trio + " and " + students[0];
 	}
+
+	return pairs;
 }
 
-function showPairs() {
+function copyPairs(pairs) {
 	var pairsString = pairs.toString()
 	pairsString = pairsString.replace(/,/g, "\n");
 	$(".js-make-pairs").attr("data-pairs", pairsString);
 }
 
 
-$(".js-make-pairs").on("click", firstClick)
 
 function firstClick() {
-	makePairs(students, loopLength);
+	var pairs = makePairs(students);
 	$(".js-make-pairs").text("Copy Pairs to Clipboard")
     $(".js-make-pairs").off('click').on('click', secondClick)
-	showPairs();
+	copyPairs(pairs);
 }
 
 function secondClick() {
 	$(".js-make-pairs").text("Redo the pairs");
     $(".js-make-pairs").off('click').on('click', firstClick);
 }
-
-new Clipboard('.js-make-pairs', {
-    text: function(trigger) {
-        return trigger.getAttribute('data-pairs');
-    }
-});
