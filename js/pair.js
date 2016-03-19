@@ -11,7 +11,7 @@ function showInput() {
 	$('.js-section').hide();
 	$('.js-input').show();
 
-	$('.js-input-form').on("keypress", "input", addInputField)
+	$('.js-input-form').on("keydown", "input", addInputField)
 	$('.js-input-form').on("submit", saveNames)
 }
 
@@ -29,7 +29,7 @@ function showRandomizer() {
 }
 
 function addInputField(event) {
-	if (event.keyCode !== 13) {
+	if (event.keyCode !== 13 && event.keyCode !== 9) {
 		return
 	}
 
