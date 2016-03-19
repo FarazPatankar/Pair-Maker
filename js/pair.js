@@ -7,6 +7,8 @@ $(".js-make-pairs").on("click", firstClick)
 
 $(".js-edit-btn").on("click", showInput)
 
+$(".js-reset-btn").on("click", resetNames)
+
 if (data === null) {
 	showInput();
 }
@@ -81,6 +83,20 @@ function saveNames(event) {
 }
 
 function addInputName(name) {
+
+	var html = `
+		<li class="input-item">
+			<input type="text" value="${name}" class="input-field">
+		</li>
+	`;
+
+	$(".js-input-list").append(html);
+}
+
+function resetNames(event) {
+	event.preventDefault();
+	localStorage.removeItem("names");
+	$(".js-input-list").empty();
 
 	var html = `
 		<li class="input-item">
