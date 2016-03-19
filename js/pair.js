@@ -36,6 +36,10 @@ function addInputField(event) {
 	event.preventDefault();
 	var $input = $(event.currentTarget);
 
+	if (!$input.val()){
+		$('.js-input-form').trigger("submit");
+		return
+	}
 	var html = `
 		<li>
 			<input type="text">
