@@ -41,8 +41,8 @@ function addInputField(event) {
 		return
 	}
 	var html = `
-		<li>
-			<input type="text">
+		<li class="input-item">
+			<input type="text" class="input-field">
 		</li>
 	`;
 
@@ -92,7 +92,7 @@ function makePairs(students) {
 		$(".js-student-images").append(html);
 	}
 	if (students.length > 0) {
-		$(".js-student-images").children(":first").append(`<img class="third-student-img animated fadeInUp" data-id="${students[0]}" src="http://dummyimage.com/250x250/126bbf/fff&text=${students[0]}">`)
+		$(".js-student-images").children(":first").append(`<img class="third-student-img animated fadeInUp" data-id="${students[0]}" src="http://dummyimage.com/250x250/126bbf/ffffff&text=${students[0]}">`)
 		var trio = pairs[0];
 		pairs[0] = trio + " and " + students[0];
 	}
