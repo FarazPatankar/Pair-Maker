@@ -26,15 +26,16 @@ var makePairs = function(students, loopLength) {
 
 		$(".js-student-images").append(html);
 	}
-	$(".js-student-images").children(":first").append(`<img class="third-student-img animated fadeInUp" data-id="${students[0]}" src="http://dummyimage.com/250x250/126bbf/fff&text=${students[0]}">`)
-	var trio = pairs[0];
-	pairs[0] = trio + " and " + students[0];
+	if (students.length > 0) {
+		$(".js-student-images").children(":first").append(`<img class="third-student-img animated fadeInUp" data-id="${students[0]}" src="http://dummyimage.com/250x250/126bbf/fff&text=${students[0]}">`)
+		var trio = pairs[0];
+		pairs[0] = trio + " and " + students[0];
+	}
 }
 
 function showPairs() {
 	var pairsString = pairs.toString()
 	pairsString = pairsString.replace(/,/g, "\n");
-	console.log("Here", pairsString)
 	$(".js-make-pairs").attr("data-pairs", pairsString);
 }
 
