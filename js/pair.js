@@ -1,5 +1,12 @@
 var data = localStorage.getItem("names");
 
+$('.js-input-form').on("keydown", "input", addInputField)
+$('.js-input-form').on("submit", saveNames)
+
+$(".js-make-pairs").on("click", firstClick)
+
+$(".js-edit-btn").on("click", showInput)
+
 if (data === null) {
 	showInput();
 }
@@ -11,8 +18,12 @@ function showInput() {
 	$('.js-section').hide();
 	$('.js-input').show();
 
-	$('.js-input-form').on("keydown", "input", addInputField)
-	$('.js-input-form').on("submit", saveNames)
+	var data = localStorage.getItem("names");
+	if (data !== null) {
+		$(".js-input-list").empty();
+		var students = JSON.parse(data);
+		students.forEach(addInputName)
+	}
 }
 
 function showRandomizer() {
@@ -22,8 +33,6 @@ function showRandomizer() {
 	        return trigger.getAttribute('data-pairs');
 	    }
 	});
-
-	$(".js-make-pairs").on("click", firstClick)
 
 	$('.js-randomizer').show();
 }
@@ -52,6 +61,7 @@ function addInputField(event) {
 	newItem.find("input").focus();
 }
 
+
 function saveNames(event) {
 	event.preventDefault();
 	var $form = $(event.currentTarget);
@@ -65,6 +75,17 @@ function saveNames(event) {
 	});
 	localStorage.setItem("names", JSON.stringify(names));
 	showRandomizer();
+}
+
+function addInputName(name) {
+
+	var html = `
+		<li class="input-item">
+			<input type="text" value="${name}" class="input-field">
+		</li>
+	`;
+
+	$(".js-input-list").append(html);
 }
 
 function makePairs(students) {
@@ -105,8 +126,6 @@ function copyPairs(pairs) {
 	pairsString = pairsString.replace(/,/g, "\n");
 	$(".js-make-pairs").attr("data-pairs", pairsString);
 }
-
-
 
 function firstClick() {
 	var data = localStorage.getItem("names");
