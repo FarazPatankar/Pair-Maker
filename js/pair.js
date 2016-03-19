@@ -56,6 +56,9 @@ function saveNames(event) {
 		return $(input).val();
 	});
 	var names = $names.toArray();
+	names = names.filter(function removeEmpty(name) {
+		return name
+	});
 	localStorage.setItem("names", JSON.stringify(names));
 	showRandomizer();
 }
