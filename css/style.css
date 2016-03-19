@@ -13,7 +13,7 @@ body {
 	text-align: center;
 }
 
-.pair-btn {
+.btn {
 	height: 100px;
 	width: 300px;
 	background: #126bbf;
@@ -24,6 +24,7 @@ body {
 	margin-bottom: 10px;
 	color: #fff;
 	font-family: 'Raleway',sans-serif;
+	cursor: pointer;
 }
 
 h1 {
@@ -153,4 +154,15 @@ h1 {
 
 .fancy-btn:focus {
 	outline: none;
+}
+
+.edit-btn {
+	position: absolute;
+	top: 5%;
+	right: 5%;
+	color: #126bbf;
+	background: #fff;
+	border: 4px solid #fff;
+	width: 150px;
+	height: 50px;
 }
