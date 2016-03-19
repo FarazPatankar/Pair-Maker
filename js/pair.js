@@ -1,18 +1,21 @@
-var data = localStorage.getItem("people");
+var data = localStorage.getItem("names");
 
 if (data === null) {
 	showInput();
 }
 else {
-	var students = JSON.parse(data);
-	showRandomizer(students);
+	showRandomizer();
 }
 
 function showInput() {
+	$('.js-section').hide();
 	$('.js-input').show();
+
+	$('.js-input-form').on("submit", saveNames)
 }
 
-function showRandomizer(students) {
+function showRandomizer() {
+	$('.js-section').hide();
 	new Clipboard('.js-make-pairs', {
 	    text: function(trigger) {
 	        return trigger.getAttribute('data-pairs');
@@ -24,10 +27,20 @@ function showRandomizer(students) {
 	$('.js-randomizer').show();
 }
 
+function saveNames(event) {
+	event.preventDefault();
+	var $form = $(event.currentTarget);
+	var $inputs = $form.find("input");
+	var $names = $inputs.map(function getValue(i, input){
+		return $(input).val();
+	});
+	var names = $names.toArray();
+	localStorage.setItem("names", JSON.stringify(names));
+	showRandomizer();
+}
 
 function makePairs(students) {
 	var loopLength = Math.floor(students.length/2);
-	console.log(loopLength);
 	var pairs = [];
 	$(".js-student-images").empty();
 	for(var i = 0; i < loopLength; i++) {
@@ -67,6 +80,8 @@ function copyPairs(pairs) {
 
 
 function firstClick() {
+	var data = localStorage.getItem("names");
+	var students = JSON.parse(data);
 	var pairs = makePairs(students);
 	$(".js-make-pairs").text("Copy Pairs to Clipboard")
     $(".js-make-pairs").off('click').on('click', secondClick)
