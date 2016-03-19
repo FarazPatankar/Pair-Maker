@@ -28,6 +28,7 @@ function showInput() {
 
 function showRandomizer() {
 	$('.js-section').hide();
+	$('.js-student-images').empty();
 	new Clipboard('.js-make-pairs', {
 	    text: function(trigger) {
 	        return trigger.getAttribute('data-pairs');
@@ -35,6 +36,8 @@ function showRandomizer() {
 	});
 
 	$('.js-randomizer').show();
+	$(".js-make-pairs").text("Click Me To Make Pairs")
+    $(".js-make-pairs").off('click').on('click', firstClick);
 }
 
 function addInputField(event) {
