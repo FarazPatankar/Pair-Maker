@@ -2,6 +2,11 @@ body {
 	background: #126bbf;
 }
 
+.top {
+	margin-top: 15px;
+	text-align: center;
+}
+
 .btn-div {
 	text-align: center;
 }
@@ -57,4 +62,9 @@ h1 {
 
 .third-student-img {
 	-webkit-animation-delay: 2.5s;
+}
+
+.logo {
+	width: 64px;
+	height: 64px;
 }
