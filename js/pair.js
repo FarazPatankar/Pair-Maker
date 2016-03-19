@@ -11,6 +11,7 @@ function showInput() {
 	$('.js-section').hide();
 	$('.js-input').show();
 
+	$('.js-input-form').on("keypress", "input", addInputField)
 	$('.js-input-form').on("submit", saveNames)
 }
 
@@ -25,6 +26,26 @@ function showRandomizer() {
 	$(".js-make-pairs").on("click", firstClick)
 
 	$('.js-randomizer').show();
+}
+
+function addInputField(event) {
+	if (event.keyCode !== 13) {
+		return
+	}
+
+	event.preventDefault();
+	var $input = $(event.currentTarget);
+
+	var html = `
+		<li>
+			<input type="text">
+		</li>
+	`;
+
+	var newItem = $(html)
+
+	$(".js-input-list").append(newItem);
+	newItem.find("input").focus();
 }
 
 function saveNames(event) {
